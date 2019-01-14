@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import styles from './Forms.scss'
-
-import Riform from 'riform'
+import styles from './Forms.module.css'
 
 import TextField from '@material-ui/core/TextField';
 
