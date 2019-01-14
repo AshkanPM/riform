@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styles from './Forms.module.css'
+import styles from './Forms.module.scss'
 
 import TextField from '@material-ui/core/TextField';
 

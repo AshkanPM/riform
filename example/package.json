@@ -6,6 +6,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.8.3",
+    "node-sass-chokidar": "^1.3.4",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
@@ -13,6 +14,8 @@
     "riform": "link:.."
   },
   "scripts": {
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
