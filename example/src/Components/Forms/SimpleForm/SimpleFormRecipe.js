@@ -1,4 +1,5 @@
 import TextInput from '../../../UI/TextInput/TextInput'
+import Button from '@material-ui/core/Button'
 
 const simpleFormRecipe = {
     username: {
@@ -31,6 +32,21 @@ const simpleFormRecipe = {
         props: {
             label: 'Password Confirmation',
             type: 'password'
+        }
+    },
+    submit: {
+        component: Button,
+        action: 'submit',
+        props: {
+            variant: 'contained',
+            color: 'secondary'
+        }
+    },
+    reset: {
+        component: Button,
+        action: 'reset',
+        props: {
+            variant: 'contained'
         }
     }
 }

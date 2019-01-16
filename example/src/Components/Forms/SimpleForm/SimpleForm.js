@@ -5,7 +5,6 @@ import { Riform, RiformControl } from 'riform'
 import simpleFormRecipe from './SimpleFormRecipe'
 
 import Paper from '@material-ui/core/Paper'
-import Button from '@material-ui/core/Button'
 
 class SimpleForm extends Component {
     render() {
@@ -15,10 +14,10 @@ class SimpleForm extends Component {
                     <span>Simple Form</span>
                 </div>
 
-                <div className={styles.body}>
-                    <Riform
-                        recipe={simpleFormRecipe}
-                    >
+                <Riform
+                    recipe={simpleFormRecipe}
+                >
+                    <div className={styles.body}>
                         <RiformControl name='username' />
 
                         <RiformControl name='email' />
@@ -26,13 +25,13 @@ class SimpleForm extends Component {
                         <RiformControl name='password' />
 
                         <RiformControl name='passwordConfirmation' />
-                    </Riform>
-                </div>
+                    </div>
 
-                <div className={styles.actions}>
-                    <Button variant='contained' color='secondary'>Submit</Button>
-                    <Button variant='contained'>Reset</Button>
-                </div>
+                    <div className={styles.actions}>
+                        <RiformControl name='submit'>Submit</RiformControl>
+                        <RiformControl name='reset'>Reset</RiformControl>
+                    </div>
+                </Riform>
             </Paper>
         )
     }

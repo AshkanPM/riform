@@ -10,23 +10,61 @@ class RiformControl extends Component {
     }
     static contextType = RiformContext
 
+    state = {
+        value: undefined,
+        recipe: undefined
+    }
+
+    componentDidMount = () => {
+        const { recipe } = this.context
+        const { name } = this.props
+
+        this.setState({ recipe: recipe[name] })
+    }
+
+    handleAction = action => {
+        const { handleFormAction } = this.context
+
+        handleFormAction(action)
+    }
+    handleChange = value => {
+        const { handleFormUpdate } = this.context
+        const { address } = this.state.recipe
+
+        this.setState({ value }, () => {
+            handleFormUpdate(address, value)
+        })
+    }
+
     render() {
-        const { name, children, ...props } = this.props
-        const recipe = this.context
+        const { children, ...props } = this.props
+        const { recipe, value } = this.state
 
         // Checking if component exists in recipe
-        if (!recipe[name]) {
+        if (!recipe) {
             return <span style={{ color: 'red' }}>Component not found!</span>
         }
 
         // Deconstructing the relevant input
         const {
             component: Component,
-            props: recipeProps
-        } = recipe[name]
+            props: recipeProps,
+            action
+        } = recipe
+
+        // Setting the relevant handlers for form actions vs form inputs
+        const controls = action
+            ? {
+                onClick: () => { this.handleAction(action) }
+            } : {
+                richange: this.handleChange,
+                rivalue: value
+            }
 
         return (
-            <Component {...recipeProps} {...props}>
+            <Component
+                {...controls} {...recipeProps} {...props}
+            >
                 {children}
             </Component>
         )
