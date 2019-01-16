@@ -1,29 +1,24 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import RiformContext from './Riform/RiformContext'
 import RiformControl from './Riform/RiformControl'
-
-export const RiformContext = React.createContext('test')
 
 class Riform extends Component {
     static propTypes = {
         children: PropTypes.node,
-        recipe: PropTypes.array
+        recipe: PropTypes.object
     }
 
     render() {
         const { children, recipe } = this.props
 
-        console.log(recipe)
-
         return (
-            <RiformContext.Provider value={'test'}>
+            <RiformContext.Provider value={recipe}>
                 {children}
             </RiformContext.Provider>
         )
     }
 }
 
-export default Riform
-
-export { RiformControl }
+export { Riform, RiformControl }

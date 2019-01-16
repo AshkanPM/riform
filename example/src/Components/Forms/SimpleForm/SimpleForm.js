@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import styles from './SimpleForm.module.scss'
 
-import Riform, { RiformControl } from 'riform'
+import { Riform, RiformControl } from 'riform'
 import simpleFormRecipe from './SimpleFormRecipe'
-import TextInput from '../../../UI/TextInput/TextInput'
 
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
@@ -20,15 +19,13 @@ class SimpleForm extends Component {
                     <Riform
                         recipe={simpleFormRecipe}
                     >
-                        <RiformControl />
+                        <RiformControl name='username' />
 
-                        <TextInput label='username' />
+                        <RiformControl name='email' />
 
-                        <TextInput label='Email' />
+                        <RiformControl name='password' />
 
-                        <TextInput label='Password' type='password' />
-
-                        <TextInput label='Confirm Password' type='password' />
+                        <RiformControl name='passwordConfirmation' />
                     </Riform>
                 </div>
 
