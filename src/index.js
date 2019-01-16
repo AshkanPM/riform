@@ -1,12 +1,21 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 class Riform extends Component {
-    static propTypes = {}
+    static propTypes = {
+        children: PropTypes.node,
+        recipe: PropTypes.array
+    }
 
     render() {
+        const { children, recipe } = this.props
+
+        console.log(recipe)
+
         return (
-            <p>Hello World!</p>
+            <React.Fragment>
+                {children}
+            </React.Fragment>
         )
     }
 }

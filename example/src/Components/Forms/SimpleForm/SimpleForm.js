@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import styles from './SimpleForm.module.scss'
 
+import Riform from 'riform'
+import simpleFormRecipe from './SimpleFormRecipe'
 import TextInput from '../../../UI/TextInput/TextInput'
 
 import Paper from '@material-ui/core/Paper'
@@ -15,13 +17,17 @@ class SimpleForm extends Component {
                 </div>
 
                 <div className={styles.body}>
-                    <TextInput label='username' />
+                    <Riform
+                        recipe={simpleFormRecipe}
+                    >
+                        <TextInput label='username' />
 
-                    <TextInput label='Email' />
+                        <TextInput label='Email' />
 
-                    <TextInput label='Password' type='password' />
+                        <TextInput label='Password' type='password' />
 
-                    <TextInput label='Confirm Password' type='password' />
+                        <TextInput label='Confirm Password' type='password' />
+                    </Riform>
                 </div>
 
                 <div className={styles.actions}>
