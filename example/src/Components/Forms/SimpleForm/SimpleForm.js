@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styles from './SimpleForm.module.scss'
 
-import Riform from 'riform'
+import Riform, { RiformControl } from 'riform'
 import simpleFormRecipe from './SimpleFormRecipe'
 import TextInput from '../../../UI/TextInput/TextInput'
 
@@ -20,6 +20,8 @@ class SimpleForm extends Component {
                     <Riform
                         recipe={simpleFormRecipe}
                     >
+                        <RiformControl />
+
                         <TextInput label='username' />
 
                         <TextInput label='Email' />

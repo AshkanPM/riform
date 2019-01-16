@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import RiformControl from './Riform/RiformControl'
+
+export const RiformContext = React.createContext('test')
+
 class Riform extends Component {
     static propTypes = {
         children: PropTypes.node,
@@ -13,11 +17,13 @@ class Riform extends Component {
         console.log(recipe)
 
         return (
-            <React.Fragment>
+            <RiformContext.Provider value={'test'}>
                 {children}
-            </React.Fragment>
+            </RiformContext.Provider>
         )
     }
 }
 
 export default Riform
+
+export { RiformControl }
