@@ -8,11 +8,16 @@ import RiformControl from './Riform/RiformControl'
 class Riform extends Component {
     static propTypes = {
         children: PropTypes.node,
-        recipe: PropTypes.object
+        recipe: PropTypes.object,
+        initial: PropTypes.objectOf(Map)
     }
 
     state = {
         formObject: Map({})
+    }
+
+    componentDidMount = () => {
+        this.resetForm()
     }
 
     handleFormUpdate = (address, value) => {
@@ -20,18 +25,25 @@ class Riform extends Component {
         this.setState({ formObject })
     }
     handleFormAction = action => {
-        if (action === 'submit') {
-            console.log(this.state.formObject.toJS())
-        }
+        if (action === 'submit') console.log(this.state.formObject.toJS())
+        if (action === 'reset') this.resetForm()
+    }
+
+    resetForm = () => {
+        const { initial } = this.props
+        
+        this.setState({ formObject: initial ? initial : Map({}) })
     }
 
     render() {
         const { children, recipe } = this.props
+        const { formObject } = this.state
 
         const context = {
             recipe: recipe,
             handleFormUpdate: this.handleFormUpdate,
-            handleFormAction: this.handleFormAction
+            handleFormAction: this.handleFormAction,
+            formObject: formObject
         }
 
         return (

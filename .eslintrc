@@ -17,6 +17,7 @@
         "indent": ["error", 4],
         "react/jsx-indent": ["error", 4],
         "react/jsx-indent-props": ["error", 4],
+        "no-unneeded-ternary": 0,
         "space-before-function-paren": 0,
         "react/jsx-boolean-value": 0
     }

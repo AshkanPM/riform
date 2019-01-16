@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styles from './SimpleForm.module.scss'
+import { Map } from 'immutable'
 
 import { Riform, RiformControl } from 'riform'
 import simpleFormRecipe from './SimpleFormRecipe'
@@ -16,6 +17,7 @@ class SimpleForm extends Component {
 
                 <Riform
                     recipe={simpleFormRecipe}
+                    initial={Map({username: 'AshkanPM'})}
                 >
                     <div className={styles.body}>
                         <RiformControl name='username' />

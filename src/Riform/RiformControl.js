@@ -11,11 +11,11 @@ class RiformControl extends Component {
     static contextType = RiformContext
 
     state = {
-        value: undefined,
         recipe: undefined
     }
 
     componentDidMount = () => {
+        // Loads the relevant input from recipe into state
         const { recipe } = this.context
         const { name } = this.props
 
@@ -31,28 +31,29 @@ class RiformControl extends Component {
         const { handleFormUpdate } = this.context
         const { address } = this.state.recipe
 
-        this.setState({ value }, () => {
-            handleFormUpdate(address, value)
-        })
+        handleFormUpdate(address, value)
     }
 
     render() {
         const { children, ...props } = this.props
-        const { recipe, value } = this.state
+        const { recipe } = this.state
+        const { formObject } = this.context
 
         // Checking if component exists in recipe
         if (!recipe) {
-            return <span style={{ color: 'red' }}>Component not found!</span>
+            return <p style={{ color: 'red' }}>Component not found!</p>
         }
 
         // Deconstructing the relevant input
         const {
             component: Component,
             props: recipeProps,
-            action
+            action,
+            address
         } = recipe
 
         // Setting the relevant handlers for form actions vs form inputs
+        const value = address ? formObject.getIn(address) : undefined
         const controls = action
             ? {
                 onClick: () => { this.handleAction(action) }
@@ -62,9 +63,7 @@ class RiformControl extends Component {
             }
 
         return (
-            <Component
-                {...controls} {...recipeProps} {...props}
-            >
+            <Component {...controls} {...recipeProps} {...props}>
                 {children}
             </Component>
         )

@@ -18,12 +18,12 @@ class TextInput extends Component {
     componentDidMount = () => {
         const { rivalue } = this.props
 
-        if (rivalue) this.setState({ value: rivalue })
+        this.setState({ value: rivalue ? rivalue : '' })
     }
     componentWillReceiveProps = nextProps => {
         const { rivalue } = nextProps
 
-        if (rivalue) this.setState({ value: rivalue })
+        this.setState({ value: rivalue ? rivalue : '' })
     }
 
     handleChange = event => {
