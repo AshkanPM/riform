@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import styles from './SimpleForm.module.scss'
-import { Map } from 'immutable'
 
 import { Riform, RiformControl } from 'riform'
 import simpleFormRecipe from './SimpleFormRecipe'
@@ -14,6 +13,9 @@ class SimpleForm extends Component {
     handleSubmit = formObject => {
         this.props.onPreviewUpdate(formObject.toJS())
     }
+    handleReset = () => {
+        this.props.onPreviewUpdate({})
+    }
 
     render() {
         return (
@@ -26,6 +28,7 @@ class SimpleForm extends Component {
                     recipe={simpleFormRecipe}
                     onSubmit={this.handleSubmit}
                     onChange={this.handleChange}
+                    onReset={this.handleReset}
                 >
                     <div className={styles.body}>
                         <RiformControl name='username' />
