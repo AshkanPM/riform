@@ -16,17 +16,17 @@ class Riform extends Component {
         formObject: Map({})
     }
 
-    componentDidMount = () => {
-        this.resetForm()
-    }
+    componentDidMount = () => this.resetForm()
 
     handleFormUpdate = (address, value) => {
         const { onChange } = this.props
 
-        const formObject = this.state.formObject.setIn(address, value)
-        this.setState({ formObject }, () => {
-            if (onChange) onChange(formObject)
-        })
+        if (address) {
+            const formObject = this.state.formObject.setIn(address, value)
+            this.setState({ formObject }, () => {
+                if (onChange) onChange(formObject)
+            })
+        }
     }
     handleFormAction = action => {
         const { onSubmit, onReset } = this.props

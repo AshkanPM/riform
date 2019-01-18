@@ -12,6 +12,8 @@ class FormGrouping extends Component {
         family: [true]
     }
 
+    componentWillUnmount = () => this.handleReset()
+
     addFamily = () => {
         const { family } = this.state
         const updatedFamily = [ ...family ]
@@ -27,15 +29,9 @@ class FormGrouping extends Component {
         this.setState({ family: updatedFamily })
     }
 
-    handleChange = formObject => {
-        this.props.onPreviewUpdate(formObject.toJS())
-    }
-    handleSubmit = formObject => {
-        this.props.onPreviewUpdate(formObject.toJS())
-    }
-    handleReset = () => {
-        this.props.onPreviewUpdate({})
-    }
+    handleChange = formObject => this.props.onPreviewUpdate(formObject.toJS())
+    handleSubmit = formObject => this.props.onPreviewUpdate(formObject.toJS())
+    handleReset = () => this.props.onPreviewUpdate({})
 
     render() {
         const { family } = this.state

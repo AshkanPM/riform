@@ -7,15 +7,11 @@ import simpleFormRecipe from './SimpleFormRecipe'
 import Paper from '@material-ui/core/Paper'
 
 class SimpleForm extends Component {
-    handleChange = formObject => {
-        this.props.onPreviewUpdate(formObject.toJS())
-    }
-    handleSubmit = formObject => {
-        this.props.onPreviewUpdate(formObject.toJS())
-    }
-    handleReset = () => {
-        this.props.onPreviewUpdate({})
-    }
+    componentWillUnmount = () => this.handleReset()
+
+    handleChange = formObject => this.props.onPreviewUpdate(formObject.toJS())
+    handleSubmit = formObject => this.props.onPreviewUpdate(formObject.toJS())
+    handleReset = () => this.props.onPreviewUpdate({})
 
     render() {
         return (
