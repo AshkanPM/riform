@@ -21,12 +21,23 @@ class Riform extends Component {
     }
 
     handleFormUpdate = (address, value) => {
+        const { onChange } = this.props
+
         const formObject = this.state.formObject.setIn(address, value)
-        this.setState({ formObject })
+        this.setState({ formObject }, () => {
+            if (onChange) onChange(formObject)
+        })
     }
     handleFormAction = action => {
-        if (action === 'submit') console.log(this.state.formObject.toJS())
-        if (action === 'reset') this.resetForm()
+        const { onSubmit, onReset } = this.props
+
+        if (action === 'submit') {
+            if (onSubmit) onSubmit(this.state.formObject)
+        }
+        if (action === 'reset') {
+            this.resetForm()
+            if (onReset) onReset()
+        }
     }
 
     resetForm = () => {

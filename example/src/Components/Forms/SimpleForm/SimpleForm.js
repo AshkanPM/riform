@@ -8,6 +8,13 @@ import simpleFormRecipe from './SimpleFormRecipe'
 import Paper from '@material-ui/core/Paper'
 
 class SimpleForm extends Component {
+    handleChange = formObject => {
+        this.props.onPreviewUpdate(formObject.toJS())
+    }
+    handleSubmit = formObject => {
+        this.props.onPreviewUpdate(formObject.toJS())
+    }
+
     render() {
         return (
             <Paper className={styles.paper}>
@@ -17,7 +24,8 @@ class SimpleForm extends Component {
 
                 <Riform
                     recipe={simpleFormRecipe}
-                    initial={Map({username: 'AshkanPM'})}
+                    onSubmit={this.handleSubmit}
+                    onChange={this.handleChange}
                 >
                     <div className={styles.body}>
                         <RiformControl name='username' />
