@@ -21,6 +21,7 @@ class RiformControl extends Component {
 
         this.setState({ recipe: recipe[name] })
     }
+    componentWillUnmount = () => this.handleChange(undefined)
 
     handleAction = action => {
         const { handleFormAction } = this.context
@@ -28,14 +29,17 @@ class RiformControl extends Component {
         handleFormAction(action)
     }
     handleChange = value => {
+        const { label } = this.props
         const { handleFormUpdate } = this.context
         const { address } = this.state.recipe
 
-        handleFormUpdate(address, value)
+        const processedAddress = (label !== undefined) ? address.concat(label) : address
+
+        handleFormUpdate(processedAddress, value)
     }
 
     render() {
-        const { children, ...props } = this.props
+        const { children, label, ...props } = this.props
         const { recipe } = this.state
         const { formObject } = this.context
 
@@ -53,7 +57,8 @@ class RiformControl extends Component {
         } = recipe
 
         // Setting the relevant handlers for form actions vs form inputs
-        const value = address ? formObject.getIn(address) : undefined
+        const processedAddress = (label !== undefined) ? address.concat(label) : address
+        const value = processedAddress ? formObject.getIn(processedAddress) : undefined
         const controls = action
             ? {
                 onClick: () => { this.handleAction(action) }

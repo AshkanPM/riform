@@ -4,6 +4,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { paraisoDark } from 'react-syntax-highlighter/dist/styles/hljs';
 
 import SimpleForm from './SimpleForm/SimpleForm'
+import FormGrouping from './FormGrouping/FormGrouping'
 
 import Grid from '@material-ui/core/Grid'
 
@@ -21,13 +22,17 @@ class Forms extends Component {
     handlePreviewUpdate = preview => this.setState({ preview })
 
     render() {
+        const { activeTab } = this.props
         const { preview } = this.state
         const prettyPreview = JSON.stringify(preview, null, 4)
 
         return (
             <Grid container className={styles.forms}>
                 <Grid item className={styles.center} xs={6}>
-                    <SimpleForm onPreviewUpdate={this.handlePreviewUpdate} />
+
+                    {activeTab === 0 && <SimpleForm onPreviewUpdate={this.handlePreviewUpdate} />}
+                    {activeTab === 2 && <FormGrouping onPreviewUpdate={this.handlePreviewUpdate} />}
+
                 </Grid>
                 <Grid item className={styles.preview} xs={6}>
                     <span className={styles.previewTitle}>Form Data</span>

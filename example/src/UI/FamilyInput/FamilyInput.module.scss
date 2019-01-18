@@ -1,0 +1,14 @@
+.familyInput {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > div:first-child {
+        width: 30%;
+        margin-right: 0.4rem;
+    }
+    & > div:last-child {
+        width: 70%;
+        margin-left: 0.4rem;
+    }
+}

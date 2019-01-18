@@ -16,22 +16,25 @@ class TextInput extends Component {
     }
 
     componentDidMount = () => {
-        const { rivalue } = this.props
+        const { rivalue, value } = this.props
+        const processedValue = rivalue ? rivalue : value ? value : ''
 
-        this.setState({ value: rivalue ? rivalue : '' })
+        this.setState({ value: processedValue })
     }
     componentWillReceiveProps = nextProps => {
-        const { rivalue } = nextProps
+        const { rivalue, value } = nextProps
+        const processedValue = rivalue ? rivalue : value ? value : ''
 
-        this.setState({ value: rivalue ? rivalue : '' })
+        this.setState({ value: processedValue })
     }
 
     handleChange = event => {
-        const { richange } = this.props
+        const { richange, onChange } = this.props
         const { value } = event.target
+        if (onChange) onChange(event)
 
         this.setState({ value }, () => {
-            richange(value)
+            if (richange) richange(value)
         })
     }
 
@@ -41,7 +44,6 @@ class TextInput extends Component {
         return (
             <TextField
                 fullWidth
-                required
                 label={label}
                 type={type}
                 margin='dense'

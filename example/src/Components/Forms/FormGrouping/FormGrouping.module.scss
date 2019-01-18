@@ -1,0 +1,36 @@
+.paper {
+    width: 500px;
+    .head {
+        height: 60px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span {
+            color: #182d36;
+            font-size: 1.1em;
+        }
+    }
+    .body {
+        padding: 1rem;
+    }
+    .controls {
+        margin-top: 0.5rem;
+        text-align: right;
+        button:first-child {
+            margin-right: 0.5rem;
+        }
+    }
+    .actions {
+        height: 70px;
+        border-top: 1px solid rgba(0, 0, 0, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        box-sizing: border-box;
+        button {
+            width: 40%;
+        }
+    }
+}
