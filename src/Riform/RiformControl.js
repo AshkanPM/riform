@@ -11,7 +11,8 @@ class RiformControl extends Component {
     static contextType = RiformContext
 
     state = {
-        recipe: undefined
+        recipe: undefined,
+        submitLock: false
     }
 
     componentDidMount = () => {
@@ -41,7 +42,7 @@ class RiformControl extends Component {
     render() {
         const { children, label, ...props } = this.props
         const { recipe } = this.state
-        const { formObject } = this.context
+        const { formObject, validation, validate } = this.context
 
         // Checking if component exists in recipe
         if (!recipe) {
@@ -59,12 +60,16 @@ class RiformControl extends Component {
         // Setting the relevant handlers for form actions vs form inputs
         const processedAddress = (label !== undefined) ? address.concat(label) : address
         const value = processedAddress ? formObject.getIn(processedAddress) : undefined
+        const error = processedAddress ? validation.getIn(processedAddress.concat('message')) : undefined
+
         const controls = action
             ? {
                 onClick: () => { this.handleAction(action) }
             } : {
                 richange: this.handleChange,
-                rivalue: value
+                rivalue: value,
+                rivalidate: validate,
+                error: error
             }
 
         return (

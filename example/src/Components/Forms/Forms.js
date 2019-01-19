@@ -4,6 +4,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { paraisoDark } from 'react-syntax-highlighter/dist/styles/hljs';
 
 import SimpleForm from './SimpleForm/SimpleForm'
+import FormValidation from './FormValidation/FormValidation'
 import FormGrouping from './FormGrouping/FormGrouping'
 
 import Grid from '@material-ui/core/Grid'
@@ -31,6 +32,7 @@ class Forms extends Component {
                 <Grid item className={styles.center} xs={6}>
 
                     {activeTab === 0 && <SimpleForm onPreviewUpdate={this.handlePreviewUpdate} />}
+                    {activeTab === 1 && <FormValidation onPreviewUpdate={this.handlePreviewUpdate} />}
                     {activeTab === 2 && <FormGrouping onPreviewUpdate={this.handlePreviewUpdate} />}
 
                 </Grid>
