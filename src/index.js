@@ -11,14 +11,21 @@ class Riform extends Component {
     static propTypes = {
         children: PropTypes.node,
         recipe: PropTypes.object,
-        initial: PropTypes.objectOf(Map)
+        rules: PropTypes.array,
+        initial: PropTypes.objectOf(Map),
+        isLoading: PropTypes.bool,
+        onError: PropTypes.func,
+        onSubmit: PropTypes.func,
+        onChange: PropTypes.func,
+        onReset: PropTypes.func
     }
 
     state = {
         formObject: Map({}),
         validator: false,
         validation: validObject,
-        isSubmitted: false
+        isSubmitted: false,
+        initialLock: false
     }
 
     componentDidMount = () => {
@@ -26,6 +33,16 @@ class Riform extends Component {
         if (rules) this.setState({ validator: new Rivalidate(rules) })
 
         this.resetForm()
+    }
+    componentWillReceiveProps = nextProps => {
+        const { isLoading } = nextProps
+        const { initialLock } = this.state
+
+        if (!initialLock && !isLoading) {
+            this.setState({ initialLock: true }, () => {
+                this.resetForm()
+            })
+        }
     }
 
     validate = callback => {
@@ -37,7 +54,7 @@ class Riform extends Component {
 
         this.setState({ validation }, () => {
             const isValid = validation.getIn(['isValid'])
-            if (isValid && typeof callback === "function") callback()
+            if (isValid && typeof callback === 'function') callback()
             if (onError) onError(validation)
         })
     }
@@ -79,7 +96,7 @@ class Riform extends Component {
     }
 
     render() {
-        const { children, recipe } = this.props
+        const { children, recipe, isLoading } = this.props
         const { formObject, validation } = this.state
 
         const context = {
@@ -88,7 +105,8 @@ class Riform extends Component {
             handleFormAction: this.handleFormAction,
             formObject: formObject,
             validation: validation,
-            validate: this.validate
+            validate: this.validate,
+            isLoading: isLoading
         }
 
         return (

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import styles from './Forms.module.scss'
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { paraisoDark } from 'react-syntax-highlighter/dist/styles/hljs';
+import { paraisoDark } from 'react-syntax-highlighter/dist/styles/hljs'
 
 import SimpleForm from './SimpleForm/SimpleForm'
 import FormValidation from './FormValidation/FormValidation'
@@ -16,6 +17,10 @@ const highlightStyles = {
 }
 
 class Forms extends Component {
+    static propTypes = {
+        activeTab: PropTypes.int
+    }
+
     state = {
         preview: {}
     }
@@ -38,8 +43,8 @@ class Forms extends Component {
                 </Grid>
                 <Grid item className={styles.preview} xs={6}>
                     <span className={styles.previewTitle}>Form Data</span>
-                    
-                    <SyntaxHighlighter 
+
+                    <SyntaxHighlighter
                         language='json'
                         style={paraisoDark}
                         customStyle={highlightStyles}

@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import styles from './SimpleForm.module.scss'
+
+import { Map } from 'immutable'
 
 import { Riform, RiformControl } from 'riform'
 import simpleFormRecipe from './SimpleFormRecipe'
@@ -7,6 +10,19 @@ import simpleFormRecipe from './SimpleFormRecipe'
 import Paper from '@material-ui/core/Paper'
 
 class SimpleForm extends Component {
+    state = {
+        initial: Map({})
+    }
+
+    static propTypes = {
+        onPreviewUpdate: PropTypes.func
+    }
+
+    componentDidMount = () => {
+        setTimeout(() => {
+            this.setState({ initial: Map({username: 'test'}) })
+        }, 5000)
+    }
     componentWillUnmount = () => this.handleReset()
 
     handleChange = formObject => this.props.onPreviewUpdate(formObject.toJS())
@@ -14,6 +30,8 @@ class SimpleForm extends Component {
     handleReset = () => this.props.onPreviewUpdate({})
 
     render() {
+        const { initial } = this.state
+
         return (
             <Paper className={styles.paper}>
                 <div className={styles.head}>
@@ -22,6 +40,7 @@ class SimpleForm extends Component {
 
                 <Riform
                     recipe={simpleFormRecipe}
+                    initial={initial}
                     onSubmit={this.handleSubmit}
                     onChange={this.handleChange}
                     onReset={this.handleReset}

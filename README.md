@@ -10,22 +10,6 @@
 npm install --save riform
 ```
 
-## Usage
-
-```jsx
-import React, { Component } from 'react'
-
-import MyComponent from 'riform'
-
-class Example extends Component {
-  render () {
-    return (
-      <MyComponent />
-    )
-  }
-}
-```
-
 ## License
 
 MIT © [AshkanPM](https://github.com/AshkanPM)

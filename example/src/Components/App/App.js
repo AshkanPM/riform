@@ -10,7 +10,7 @@ import Forms from '../Forms/Forms'
 
 export default class App extends Component {
     state = {
-        activeTab: 1
+        activeTab: 0
     }
 
     handleTabChange = (_, value) => {
@@ -22,11 +22,11 @@ export default class App extends Component {
 
         return (
             <MuiThemeProvider theme={theme}>
-                <AppBar position="fixed" color="secondary">
+                <AppBar position='fixed' color='secondary'>
                     <Tabs value={activeTab} onChange={this.handleTabChange}>
-                        <Tab label="Simple Form" />
-                        <Tab label="Form Validation" />
-                        <Tab label="Form Grouping" />
+                        <Tab label='Simple Form' />
+                        <Tab label='Form Validation' />
+                        <Tab label='Form Grouping' />
                     </Tabs>
                 </AppBar>
 
