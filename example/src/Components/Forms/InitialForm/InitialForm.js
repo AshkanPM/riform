@@ -1,17 +1,36 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import styles from './SimpleForm.module.scss'
+import styles from './InitialForm.module.scss'
 
 import { Riform, RiformControl } from 'riform'
-import simpleFormRecipe from './SimpleFormRecipe'
+import initialFormRecipe from './InitialFormRecipe'
+import { Map } from 'immutable'
 
 import Paper from '@material-ui/core/Paper'
 
-class SimpleForm extends Component {
+class InitialForm extends Component {
     static propTypes = {
         onPreviewUpdate: PropTypes.func
     }
 
+    state = {
+        initial: Map({}),
+        isLoading: true
+    }
+
+    componentDidMount = () => {
+        // Simulating server call
+        setTimeout(() => {
+            this.setState({
+                initial: Map({
+                    firstName: 'John',
+                    lastName: 'Smith',
+                    job: 'Developer'
+                }),
+                isLoading: false
+            })
+        }, 4000)
+    }
     componentWillUnmount = () => this.handleReset()
 
     handleChange = formObject => this.props.onPreviewUpdate(formObject.toJS())
@@ -19,14 +38,18 @@ class SimpleForm extends Component {
     handleReset = () => this.props.onPreviewUpdate({})
 
     render() {
+        const { initial, isLoading } = this.state
+
         return (
             <Paper className={styles.paper}>
                 <div className={styles.head}>
-                    <span>Simple Form</span>
+                    <span>Initial Form</span>
                 </div>
 
                 <Riform
-                    recipe={simpleFormRecipe}
+                    initial={initial}
+                    isLoading={isLoading}
+                    recipe={initialFormRecipe}
                     onSubmit={this.handleSubmit}
                     onChange={this.handleChange}
                     onReset={this.handleReset}
@@ -49,4 +72,4 @@ class SimpleForm extends Component {
     }
 }
 
-export default SimpleForm
+export default InitialForm

@@ -27,6 +27,7 @@ export default class App extends Component {
                         <Tab label='Simple Form' />
                         <Tab label='Form Validation' />
                         <Tab label='Form Grouping' />
+                        <Tab label='Initial Form' />
                     </Tabs>
                 </AppBar>
 

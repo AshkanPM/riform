@@ -1,7 +1,7 @@
 import TextInput from '../../../UI/TextInput/TextInput'
 import Button from '@material-ui/core/Button'
 
-const simpleFormRecipe = {
+const initialFormRecipe = {
     firstName: {
         component: TextInput,
         address: ['firstName'],
@@ -43,4 +43,4 @@ const simpleFormRecipe = {
     }
 }
 
-export default simpleFormRecipe
+export default initialFormRecipe

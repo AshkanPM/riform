@@ -35,7 +35,7 @@ class Riform extends Component {
         this.resetForm()
     }
     componentWillReceiveProps = nextProps => {
-        const { isLoading } = nextProps
+        const { isLoading, value } = nextProps
         const { initialLock } = this.state
 
         if (!initialLock && !isLoading) {
@@ -89,10 +89,17 @@ class Riform extends Component {
         }
     }
 
+    loadFormValue = formValue => {
+        this.setState({ formObject: formValue })
+    }
     resetForm = () => {
         const { initial } = this.props
 
-        this.setState({ formObject: initial ? initial : Map({}), validation: validObject, isSubmitted: false })
+        this.setState({
+            formObject: initial ? initial : Map({}),
+            validation: validObject,
+            isSubmitted: false
+        })
     }
 
     render() {
