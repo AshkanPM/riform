@@ -1,6 +1,13 @@
 {
-  "main.css": "static/css/main.65027555.css",
-  "main.css.map": "static/css/main.65027555.css.map",
-  "main.js": "static/js/main.f4308df6.js",
-  "main.js.map": "static/js/main.f4308df6.js.map"
+  "main.css": "/riform/static/css/main.db41960e.chunk.css",
+  "main.js": "/riform/static/js/main.4831ec78.chunk.js",
+  "main.js.map": "/riform/static/js/main.4831ec78.chunk.js.map",
+  "static/js/1.c88ddfcf.chunk.js": "/riform/static/js/1.c88ddfcf.chunk.js",
+  "static/js/1.c88ddfcf.chunk.js.map": "/riform/static/js/1.c88ddfcf.chunk.js.map",
+  "runtime~main.js": "/riform/static/js/runtime~main.4b7d274e.js",
+  "runtime~main.js.map": "/riform/static/js/runtime~main.4b7d274e.js.map",
+  "static/css/main.db41960e.chunk.css.map": "/riform/static/css/main.db41960e.chunk.css.map",
+  "index.html": "/riform/index.html",
+  "precache-manifest.6885c4cb0382270ca708bca9ad01be3f.js": "/riform/precache-manifest.6885c4cb0382270ca708bca9ad01be3f.js",
+  "service-worker.js": "/riform/service-worker.js"
 }
