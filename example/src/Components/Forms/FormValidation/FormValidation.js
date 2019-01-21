@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import styles from './FormValidation.module.scss'
 
 import { Riform, RiformControl } from 'riform'
@@ -8,6 +9,10 @@ import formValidationRules from './FormValidationRules'
 import Paper from '@material-ui/core/Paper'
 
 class FormValidation extends Component {
+    static propTypes = {
+        onPreviewUpdate: PropTypes.func
+    }
+
     componentWillUnmount = () => this.handleReset()
 
     handleChange = formObject => this.props.onPreviewUpdate(formObject.toJS())

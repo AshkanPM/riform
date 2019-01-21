@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import styles from './FormGrouping.module.scss'
 
 import { Riform, RiformControl } from 'riform'
@@ -8,6 +9,10 @@ import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 
 class FormGrouping extends Component {
+    static propTypes = {
+        onPreviewUpdate: PropTypes.func
+    }
+
     state = {
         family: [true]
     }

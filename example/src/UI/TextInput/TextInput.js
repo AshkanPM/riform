@@ -2,14 +2,16 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import TextField from '@material-ui/core/TextField'
-import WarningIcon from '@material-ui/icons/Warning';
+import WarningIcon from '@material-ui/icons/Warning'
 
 class TextInput extends Component {
     static propTypes = {
         label: PropTypes.string.isRequired,
         type: PropTypes.string,
         error: PropTypes.string,
+        onChange: PropTypes.func,
         richange: PropTypes.func,
+        value: PropTypes.any,
         rivalue: PropTypes.any,
         rivalidate: PropTypes.func
     }

@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles'
 
 const theme = createMuiTheme({
     palette: {
@@ -15,8 +15,8 @@ const theme = createMuiTheme({
         tonalOffset: 0.2
     },
     typography: {
-        useNextVariants: true,
+        useNextVariants: true
     }
-});
+})
 
 export default theme
