@@ -6,7 +6,11 @@ import RiformContext from './RiformContext'
 class RiformControl extends Component {
     static propTypes = {
         name: PropTypes.string,
-        children: PropTypes.node
+        children: PropTypes.node,
+        label: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ])
     }
     static contextType = RiformContext
 
@@ -22,7 +26,7 @@ class RiformControl extends Component {
 
         this.setState({ recipe: recipe[name] })
     }
-    componentWillUnmount = () => this.handleChange(undefined)
+    // componentWillUnmount = () => this.handleChange(undefined)
 
     handleAction = action => {
         const { handleFormAction } = this.context
