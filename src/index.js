@@ -72,7 +72,10 @@ class Riform extends Component {
         const { onChange } = this.props
 
         if (address) {
-            const formObject = this.state.formObject.setIn(address, value)
+            let formObject = this.state.formObject.setIn(address, value)
+            if (value === undefined) {
+                formObject = formObject.deleteIn(address)
+            }
 
             this.setState({ formObject }, () => {
                 if (onChange) onChange(formObject)
