@@ -26,7 +26,9 @@ class RiformControl extends Component {
 
         this.setState({ recipe: recipe[name] })
     }
-    // componentWillUnmount = () => this.handleChange(undefined)
+    componentWillUnmount = () => {
+        this.handleChange(undefined)
+    }
 
     handleAction = action => {
         const { handleFormAction } = this.context

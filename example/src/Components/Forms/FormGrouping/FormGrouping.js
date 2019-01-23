@@ -7,6 +7,7 @@ import formGroupingRecipe from './FormGroupingRecipe'
 
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
+import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined'
 
 class FormGrouping extends Component {
     static propTypes = {
@@ -14,22 +15,27 @@ class FormGrouping extends Component {
     }
 
     state = {
-        family: [true]
+        family: []
     }
 
+    componentDidMount = () => {
+        this.addFamily()
+    }
     componentWillUnmount = () => this.handleReset()
 
     addFamily = () => {
         const { family } = this.state
-        const updatedFamily = [ ...family ]
-        updatedFamily.push(true)
+        const updatedFamily = [...family]
+        const index = (updatedFamily.length - 1) + 1
+
+        updatedFamily.push(index)
 
         this.setState({ family: updatedFamily })
     }
-    removeFamily = () => {
+    removeFamily = (key) => {
         const { family } = this.state
-        const updatedFamily = [ ...family ]
-        updatedFamily.pop()
+        let updatedFamily = [...family]
+        updatedFamily = updatedFamily.filter(id => id !== key)
 
         this.setState({ family: updatedFamily })
     }
@@ -56,13 +62,17 @@ class FormGrouping extends Component {
                     <div className={styles.body}>
                         <RiformControl name='fullname' />
 
-                        {family.map((_, index) => (
-                            <RiformControl key={index} label={index} name='family' />
+                        {family.map((id) => (
+                            <div className={styles.inputGroup} key={id}>
+                                <RiformControl label={id} name='family' />
+                                <Button variant='outlined' color='primary' onClick={() => { this.removeFamily(id) }}>
+                                    <DeleteOutlinedIcon />
+                                </Button>
+                            </div>
                         ))}
 
                         <div className={styles.controls}>
                             <Button variant='contained' color='secondary' onClick={this.addFamily}>Add</Button>
-                            <Button variant='contained' onClick={this.removeFamily}>Remove</Button>
                         </div>
                     </div>
 

@@ -35,7 +35,7 @@ class Riform extends Component {
         this.resetForm()
     }
     componentWillReceiveProps = nextProps => {
-        const { isLoading, value } = nextProps
+        const { isLoading } = nextProps
         const { initialLock } = this.state
 
         if (!initialLock && !isLoading) {

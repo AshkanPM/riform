@@ -10,7 +10,7 @@ import Forms from '../Forms/Forms'
 
 export default class App extends Component {
     state = {
-        activeTab: 0
+        activeTab: 2
     }
 
     handleTabChange = (_, value) => {
