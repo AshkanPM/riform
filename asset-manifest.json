@@ -1,13 +1,13 @@
 {
-  "main.css": "/riform/static/css/main.db41960e.chunk.css",
-  "main.js": "/riform/static/js/main.4831ec78.chunk.js",
-  "main.js.map": "/riform/static/js/main.4831ec78.chunk.js.map",
-  "static/js/1.c88ddfcf.chunk.js": "/riform/static/js/1.c88ddfcf.chunk.js",
-  "static/js/1.c88ddfcf.chunk.js.map": "/riform/static/js/1.c88ddfcf.chunk.js.map",
+  "main.css": "/riform/static/css/main.9a3ae37e.chunk.css",
+  "main.js": "/riform/static/js/main.c966a470.chunk.js",
+  "main.js.map": "/riform/static/js/main.c966a470.chunk.js.map",
+  "static/js/1.3ac136e4.chunk.js": "/riform/static/js/1.3ac136e4.chunk.js",
+  "static/js/1.3ac136e4.chunk.js.map": "/riform/static/js/1.3ac136e4.chunk.js.map",
   "runtime~main.js": "/riform/static/js/runtime~main.4b7d274e.js",
   "runtime~main.js.map": "/riform/static/js/runtime~main.4b7d274e.js.map",
-  "static/css/main.db41960e.chunk.css.map": "/riform/static/css/main.db41960e.chunk.css.map",
+  "static/css/main.9a3ae37e.chunk.css.map": "/riform/static/css/main.9a3ae37e.chunk.css.map",
   "index.html": "/riform/index.html",
-  "precache-manifest.6885c4cb0382270ca708bca9ad01be3f.js": "/riform/precache-manifest.6885c4cb0382270ca708bca9ad01be3f.js",
+  "precache-manifest.cbeef12043598649cc1f7d0a3ee70dce.js": "/riform/precache-manifest.cbeef12043598649cc1f7d0a3ee70dce.js",
   "service-worker.js": "/riform/service-worker.js"
 }
