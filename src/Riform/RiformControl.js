@@ -7,6 +7,7 @@ class RiformControl extends Component {
     static propTypes = {
         name: PropTypes.string,
         children: PropTypes.node,
+        persistOnUnmount: PropTypes.bool,
         label: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.number
@@ -27,7 +28,9 @@ class RiformControl extends Component {
         this.setState({ recipe: recipe[name] })
     }
     componentWillUnmount = () => {
-        this.handleChange(undefined)
+        const { persistOnUnmount } = this.props
+
+        if (!persistOnUnmount) this.handleChange(undefined)
     }
 
     handleAction = action => {

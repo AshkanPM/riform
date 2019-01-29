@@ -28,7 +28,7 @@ const formValidationRules = [
         method: value => value && value.length > 0,
         validWhen: true,
         message: 'Please confirm your password'
-    },
+    }
 ]
 
 export default formValidationRules
